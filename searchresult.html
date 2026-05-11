@@ -19,21 +19,19 @@
       <div class="navBar">
 
         <div class="navBarLeftSec">
-          <button class="filterToggle">&#9776;</button>
+
+          <button class="filterMenuToggle" onclick="document.getElementById('filterCheckbox').click()">Filter  Menu</button>
+          <input id="filterCheckbox" type="checkbox" onchange="toggleFilterMenu()" style="display: none;">
+          
           <button class="darkModeToggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
-            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12.1 2.85c.34-.68-.36-1.39-1.05-1.11C6.83 3.46 4 7.6 4 12.2 4 17.63 8.37 22 13.8 22c4.6 0 8.74-2.83 10.46-7.05.28-.69-.43-1.39-1.11-1.05-1.13.56-2.4.88-3.75.88-4.65 0-8.42-3.77-8.42-8.42 0-1.35.32-2.62.88-3.75z"></path>
-            </svg>
-            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM11 1h2v4h-2V1zM11 19h2v4h-2v-4zM1 11h4v2H1v-2zM19 11h4v2h-4v-2zM4.22 2.81l2.83 2.83-1.41 1.41-2.83-2.83 1.41-1.41zM18.36 16.95l2.83 2.83-1.41 1.41-2.83-2.83 1.41-1.41zM19.78 2.81l1.41 1.41-2.83 2.83-1.41-1.41 2.83-2.83zM5.64 16.95l1.41 1.41-2.83 2.83-1.41-1.41 2.83-2.83z"></path>
-            </svg>
+
           </button>
           <a href="Homepage.html" style="text-decoration: none;">
             <h1 class="navBarLogo">
-              TEAM47<br><span style="color: rgb(208, 145, 245);">SPORTS</span>
+              TEAM47<br>SPORTS
             </h1>
           </a>
-          <input class="navBarSearch" type="text" placeholder="Search for Articles...">
+          <input class="navSearch navBarSearch" type="text" placeholder="Search for Articles...">
         </div>
 
         <div class="navBarRightSec">
@@ -64,39 +62,39 @@
     <aside class="filters">
         <h1>FILTERS</h1>
 
-
             <div class="filterGroup">
                 <h3>Scope</h3>
                 <div class="filterLabels">
-                    <label><input type="checkbox" name="scope" value="global"> Global</label>
-                    <label><input type="checkbox" name="scope" value="local"> Local</label>
+                    <label><input type="checkbox" id="scopeGlobal" class="filterInput"> Global</label>
+                    <label><input type="checkbox" id="scopeLocal" class="filterInput"> Local</label>
                 </div>
             </div>
 
             <div class="filterGroup">
                 <h3>Sport</h3>
                 <div class="filterLabels">
-                    <label><input type="checkbox" name="sport" value="football"> Football</label>
-                    <label><input type="checkbox" name="sport" value="boxing"> Boxing</label>
-                    <label><input type="checkbox" name="sport" value="darts"> Darts</label>
+                    <label><input type="checkbox" id="sportFootball" class="filterInput"> Football</label>
+                    <label><input type="checkbox" id="sportBoxing" class="filterInput"> Boxing</label>
+                    <label><input type="checkbox" id="sportDarts" class="filterInput"> Darts</label>
                 </div>
             </div>
 
             <div class="filterGroup">
                 <h3>Sort By</h3>
                 <div class="filterLabels">
-                    <label><input type="radio" name="sort" value="newest"> Newest</label>
-                    <label><input type="radio" name="sort" value="oldest"> Oldest</label>
-                    <label><input type="radio" name="sort" value="popular"> Most Popular</label>
+                    <label><input type="radio" name="sort" id="sortNewest" class="filterInput"> Newest</label>
+                    <label><input type="radio" name="sort" id="sortOldest" class="filterInput"> Oldest</label>
+                    <label><input type="radio" name="sort" id="sortPopular" class="filterInput"> Most Popular</label>
                 </div>
             </div>
-                </aside>
+    </aside>
 
 
 
 
     <section class="featured">
-      <div class="featuredGrid"></div>
+      <div class="featuredGrid resultList">
+      </div>
     </section>
   </main>
 
@@ -104,22 +102,11 @@
 
   </footer>
 
-  <script src="scripts/articles.js"></script>
   <script src="scripts/auth.js"></script>
+  <script type="module" src="scripts/general.js"></script>
+  <script type="module" src="scripts/resultpage.js"></script>
   <script>
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    }
-
     initAuthNav();
-    initArticleSearch();
-    initArticleFilters();
-    renderSearchResults();
   </script>
 </body>
 </html>
